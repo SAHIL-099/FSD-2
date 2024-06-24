@@ -1,0 +1,5 @@
+var express=require('express')
+var app=express()
+var api=require('./271_1.js')
+app.use("/a",api)
+app.listen(7777)
