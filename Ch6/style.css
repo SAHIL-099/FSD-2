@@ -1,0 +1,15 @@
+.products-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.products-container img {
+  margin: 10px;
+}
+
+.products-container h2 {
+  font-size: 18px;
+  margin: 10px;
+}
