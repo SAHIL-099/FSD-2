@@ -1,0 +1,26 @@
+Consider a collection student having documents like this:
+[
+ {_id:123433,name: "DDD",age:32},
+ {_id:123434,name: "BBB",age:20},
+ {_id:123435,name: "AAA",age:10},
+]
+Do as directed:
+(1) Create an index & fire a command to retrieve a document having age>15 and name is "BBB". 
+Stats must return values nReturned=1, docExamined=1, stage="IXSCAN". Perform required 
+indexing.
+
+-->db.student.createIndex({ age: 1, name: 1 });
+-->db.student.find({ age: { $gt: 15 }, name: "BBB" }).explain("executionStats");
+
+
+
+(2) Create an index on subset of a collection having age>30. Also write a command to get a stats 
+"IXSCAN" for age>30.
+
+-->db.student.createIndex(
+  { age: 1 },  // Indexing on 'age' field
+  { partialFilterExpression: { age: { $gt: 30 } } }  // Only index documents with 'age > 30'
+);
+
+-->db.student.find({ age: { $gt: 30 } }).explain("executionStats");
+

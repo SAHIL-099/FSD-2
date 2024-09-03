@@ -1,0 +1,27 @@
+Consider collection named “movie” having documents like this:
+[
+ {"title": "Inception", "director": "Christopher Nolan", "release_year": 2010},
+ {"title": "The Matrix", "director": "The Wachowskis", "release_year": 1999},
+ {"title": "The Avengers", "director": "Joss Whedon", "release_year": 2012,}
+]
+Do as directed:
+(1) Create a subset-based index that includes only movies released after the year 2000. Specify the 
+field or condition used in the subset. Additionally, write a command to get a scan stage = 
+“IXSCAN” for movie released after the year 2000 and give the values of nReturned and 
+docExamined.
+
+-->db.movie.createIndex(
+  { release_year: 1 },
+  { partialFilterExpression: { release_year: { $gt: 2000 } } }
+);
+
+-->db.movie.find({ release_year: { $gt: 2000 } }).explain("executionStats");
+
+
+
+(2) Generate indexing on director and release_year. Additionally, write a command to get movie 
+released on or before the year 2010 and give the values of nReturned, docExamined and its scan 
+stage.
+
+---> db.movie.createIndex({ director: 1, release_year: 1 });
+-->db.movie.find({ release_year: { $lte: 2010 } }).explain("executionStats");

@@ -1,0 +1,19 @@
+Consider a collection student having documents like this:
+[
+ {_id:123433,name: "DDD",age:32},
+ {_id:123434,name: "BBB",age:20},
+ {_id:123435,name: "AAA BBB",age:10}
+]
+(1) Retrieve all records having “BBB” as a substring in name by indexing. Apply required indexing. 
+
+Predict the values of nReturned & docsExamined properties also.
+
+-->db.student.createIndex({name:1})
+-->db.student.find({name:/BBB/}).explain('executionstats')
+
+(2) Create an index and fire a command to retrieve documents having age>15. Stats must return 
+values nReturned=2 & docExamined=2, even though total 3 records are there.
+
+-->db.student.createIndex({age:1})
+-->db.student.find({age:{$gt:15}})
+

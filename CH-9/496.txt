@@ -1,0 +1,13 @@
+Map following SQL queries to MongoDB query:
+(1) select age,name from employee where status="active"
+--->db.employee.find({status:'active'},{age:true,name:true,_id:false})
+
+(2) select * from employee where status!="active"
+--->db.employee.find({status:{$ne:'active'}})
+
+(3) select name from employee order by age desc
+-->db.employee.find({},{name:1,_id:0}).sort({age:-1})
+
+(4)select * from employee where status=”active” or age=50
+
+-->db.employee.find({$or:[{status:"active"},{age:50}]})

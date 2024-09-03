@@ -1,0 +1,23 @@
+Write a command to initiate 2 replicas in a replica set "rs1"
+
+
+For example, you can start two MongoDB instances on different ports:
+mongod --port 27017 --replSet rs1 --dbpath /data/db1
+mongod --port 27018 --replSet rs1 --dbpath /data/db2
+
+Connect to One of the Instances Using mongo Shell: You can connect to the primary instance (typically the first one you started).
+mongo --port 27017
+
+
+Initiate the Replica Set: Use the rs.initiate() command to initiate the replica set with the configuration for two members.
+
+MongoDB Command to Initiate a Replica Set 
+rs.initiate(
+  {
+    _id: "rs1",  // Replica set name
+    members: [   // Members of the replica set
+      { _id: 0, host: "localhost:27017" },  // First member (primary)
+      { _id: 1, host: "localhost:27018" }   // Second member (secondary)
+    ]
+  }
+);

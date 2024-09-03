@@ -1,0 +1,18 @@
+Map following SQL queries to MongoDB query:
+(1) alter table people add joiningDate datetime
+
+-->db.people.updateMany({}, {$set: {joiningDate: new Date()}})
+
+(2) alter table people drop column joiningDate
+
+-->db.people.updateMany({}, { $unset: { joiningDate: "" } })
+
+(3) select age,name from people where status="PH"
+
+-->db.people.find({status:"PH"},{age:1,name:1,_id:0})
+
+(4) select * from people where status!="PH"
+-->db.people.find({status:{$ne:"PH"}})
+
+(5) select name from people order by age desc
+-->db.people.find({},{name:1,_id:0}).sort({age:-1})
