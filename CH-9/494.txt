@@ -1,13 +1,14 @@
 Create a collection name Student. Having fields name, age, std, percentage.
 (1)insert 3 random records in table.
 
+-->db.createCollection('student')
 -->db.student.insertMany([{name:"abc",age:18,std:4,percentage:88.79},
 {name:"pqr",age:19,std:5,percentage:92.12},
 {name:"xyz",age:20,std:6,percentage:95.67}])
 
 
 (2)find name of all student age>5.
--->db.student.find({age:{$gt:5}})
+-->db.student.find({age:{$gt:5}},{name:1,_id:0})
 
 (3) update the std for all by 1.
 -->db.student.updateMany({},{$inc:{std:1}})
