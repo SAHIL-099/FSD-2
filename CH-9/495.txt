@@ -13,7 +13,7 @@ position, salary.
 (3) Update position of all employees to “Software Developer” whose name is “XYZ” and age 
 is equal to 31. If not such document available than insert the document with updated values.
 
--->db.employee.updateMany({name:'XYZ',age:{$eq:31}},{$set:{position:"Software  Developer"}},upsert:true)
+-->db.employee.updateMany({name:'XYZ',age:{$eq:31}},{$set:{position:"Software  Developer"}},{upsert:true})
 
 (4) Display position and name of the employee having lowest salary
 -->db.employee.find({},{_id:false,position:true,name:true}).sort(salary:1).limit(1)

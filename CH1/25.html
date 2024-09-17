@@ -1,0 +1,51 @@
+<!-- Write a JSON script by entering user detail of three different person having same 
+age group in string format method. Print the following result in object form. (1) 
+User Details (2) Name of 2nd person and his/her age. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport    " content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var json = `{ 
+            "userDetails": 
+            [
+            {
+            "name": "John", 
+            "age": 25,
+            "gender":"Male",
+            "occupation": "Engineer"
+            },
+            {
+            "name": "Emily", 
+            "age": 25,
+            "gender": "Female", 
+            "occupation":"Doctor"
+            },
+            {
+            "name": "Michael",
+            "age": 25,
+            "gender":"Male", 
+            "occupation":"Teacher"
+            }
+            ]
+            }`
+
+            var data = JSON.parse(json);
+            var userDetails = data.userDetails;
+            console.log("User Details:");
+        
+        console.log(userDetails);
+        var secondPerson = userDetails[1]; 
+        var name = secondPerson.name; 
+        var age = secondPerson.age;
+        console.log("Name of 2nd person:"+name);
+        console.log("Age of 2nd person:"+age);
+        
+    </script>
+</body>
+</html>
